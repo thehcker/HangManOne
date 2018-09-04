@@ -1,25 +1,27 @@
 import random
-
+# A function that prints the hangman using ASCII whenever called
 def printHang(n):
-    gal = [['---- '],
+    hang = [['---- '],
            ['|  | '],
            ['|    '],
            ['|    '],
            ['|    ']]
     if n < 6:
-        gal[2] = ['|  o ']
+        hang[2] = ['|  o ']
     if n < 5:
-        gal[3] = ['| /  ']
+        hang[3] = ['| /  ']
     if n < 4:
-        gal[3] = ['| / \\']
+        hang[3] = ['| / \\']
     if n < 3:
-        gal[3] = ['| /|\\']
+        hang[3] = ['| /|\\']
     if n < 2:
-        gal[4] = ['| /  ']
+        hang[4] = ['| /  ']
     if n < 1:
-        gal[4] = ['| / \\']
-    for i in gal:
+        hang[4] = ['| / \\']
+    for i in hang:
         print(''.join(i))
+#Saves randon word from sowpods as guessWord.
+#Returns random word from sowpods dictionary
 
 def randomWord():
     f = open('sowpods.txt', 'r')
@@ -28,7 +30,7 @@ def randomWord():
     return guessWord
 
 if __name__ == '__main__':
-
+# Loops through the proram as long as the game is running
     while True:
         print('Welcome to Hangman!')
         guessWord = randomWord()
@@ -53,12 +55,12 @@ if __name__ == '__main__':
                     if list(guessWord)[i] == guessLetter:
                         guessed[i] = guessLetter
                     i += 1
-                    
+        #Win or lose condition (display having no underscores left in it); breaks loop.
         if guesses > 0:
-            print('You\'re God damn right Champ!, \nit\'s ' + guessWord + '.')
+            print('You\'re God damn right Champ! \nit\'s ' + guessWord + '.')
         else:
             print('You lost. Looser.')
-
+        #Prompts the user to either start another game or exit from the game.
         if input('Play again? (Y//N):').upper() == 'N':
             break
        
